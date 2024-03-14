@@ -9,7 +9,7 @@ import log2 from "./sample2.jpg"
 import log3 from "./sample6.jpg"
 import log4 from "./sample4.jpg"
 import log5 from "./adv1.png"
-import log6 from "./3-removebg-preview.png"
+import log6 from "./adv3.png"
 import log7 from "./adv2.png"
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
