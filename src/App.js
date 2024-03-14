@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import log from "./logo1.png";
 import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
-import video from "./final video poc-1.mp4"
+import video from "./video.mp4"
 import './App.css';
 import log1 from "./sample1.jpg";
 import log2 from "./sample2.jpg"
