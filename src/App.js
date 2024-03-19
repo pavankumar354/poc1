@@ -96,7 +96,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "http://127.0.0.1:8000";
+  const baseUrl = "https://i3czegfutyv7vj5d2krshzlegm0gpxda.lambda-url.ap-south-1.on.aws";
 
   const handleFetchImage = async () => {
     try {
@@ -111,34 +111,34 @@ const App = () => {
       const formData = new FormData();
       formData.append('image', selectedImage);
       const response = await axios.post(`${baseUrl}/upload-image`, formData);
-  
-      console.log(response.data); 
+
+      const { classification_result, detection_plot_url, labels_with_confidence } = response.data;
+
       const uploadedImageDetails = {
         id: 1,
         url: URL.createObjectURL(selectedImage),
         alt: 'Uploaded Image',
         description: 'Image uploaded successfully',
       };
-  
+     
       const outputImageDetails = {
         id: 2,
-        url: `${baseUrl}${response.data.detection_plot_url}?timestamp=${new Date().getTime()}`,
+        url: `${baseUrl}${detection_plot_url}?timestamp=${new Date().getTime()}`,
         alt: 'AI Result',
-        description: response.data.classification_result,
-        labelsWithConfidence: response.data.labels_with_confidence,
+        description: classification_result,
+        labelsWithConfidence: labels_with_confidence,
       };
-      
-  
-    setApiImage([uploadedImageDetails, outputImageDetails]);
-    setUploadStatus('Image uploaded successfully');
-  } catch (error) {
+
+      setApiImage([uploadedImageDetails, outputImageDetails]);
+      setUploadStatus('Image uploaded successfully');
+    } catch (error) {
       console.error('Error fetching image:', error);
       console.error('Error Details:', error.response);
-    }finally {
+      setError('Error uploading image. Please try again.');
+    } finally {
       setLoading(false);
     }
   };
-
   const handleClear = () => {
     setSelectedImage(null);
     setApiImage(null);
@@ -194,13 +194,13 @@ const App = () => {
 
   return (
     <div className={`app-container ${typingAnimation ? 'typing-animation-active' : ''}`}>
-      <div className='heading'>
+      <div className='main-heading'>
         <h1>Nvision AI</h1>
       </div>
-      <img src={log} alt="logo" className='logo' />
+      <img src={log} alt="logo" className='company-logo' />
       <p className='description'>A Tool for <span className='description1'>Automatic Identification of Products and Defects using Computer Vision </span> to enhance process efficiency and productivity.</p>
       
-      <div className="video-container1">
+      <div className="video-container">
         <video
           id="main-video"
           src={video}
@@ -210,7 +210,7 @@ const App = () => {
           controls={false} 
           onClick={handlePauseResume} 
         />
-        <div className="video-controls1" >
+        <div className="video-controls" >
           {videoPlaying ? (
             <MdPause onClick={handlePauseResume} className='control-icon1' />
           ) : (
@@ -218,28 +218,35 @@ const App = () => {
           )}
         </div>
       </div>
-      <div className='advantages'>
+      <div className='advantages-container'>
         <h2>Features of this Product</h2>
         <div className='adv'>
           <div className='adv1'>
-            <img src={log6} alt="adv" className='adv-images1'/>
-            <p className='par'>Automatic identification of the product.</p>
+            <img src={log6} alt="adv" className='adv-images'/>
+            <p className='adv-par'>Automatic identification of the product.</p>
           </div>
           <div className='adv1'>
           <img src={log5} alt="adv" className='adv-images'/>
-          <p className='par'>Efficiently identifies and categorizes defects found across products.</p>
+          <p className='adv-par'>Efficiently identifies and categorizes defects found across products.</p>
           </div>
           <div className='adv1'>
           <img src={log7} alt="adv" className='adv-images'/>
-          <p className='par'>Improved efficiency with reduced processing time.</p>
+          <p className='adv-par'>Improved efficiency with reduced processing time.</p>
           </div>
         </div>
       </div>
-      <div className='ai-text'>
-      <h2 className='ai'>Let <span className='demo'>Nvision AI </span>accelerate your business growth ,Try Validating!</h2>
+      <div className='test-heading-container'>
+      <h2 className='test-heading'>Let <span className='demo'>Nvision AI </span>accelerate your business growth</h2>
       </div>
-      <div className='demo-cont'>
+      <div className='test-heading-container1'>
+      <h2 className='test-heading1'>Try Validating!</h2>
+      </div>
+      <div className='demo-container'>
+        
       <div className='app'>
+      
+      
+      
       <h3>{uploadStatus}</h3>
       <div className='image-upload-container'>
         <div
