@@ -50,7 +50,7 @@ body {
 
 .demo{
   color: #e74c3c;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 
@@ -95,7 +95,7 @@ body {
   background: radial-gradient(circle at center, #56CCF2, #2F80ED);
   width: 100%;
   min-height: 130px;
-  max-height: 300px;
+  max-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -512,8 +512,8 @@ label.browse-button {
     font-size: 10px;
   }
 
-  .logo{
-    width: 150px;
+  .company-logo{
+    width: 130px;
   }
 
   .adv{

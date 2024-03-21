@@ -96,7 +96,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "https://i3czegfutyv7vj5d2krshzlegm0gpxda.lambda-url.ap-south-1.on.aws";
+  const baseUrl = "https://wjih4eofe2b63wr4z3ok5rxngi0czlqo.lambda-url.ap-south-1.on.aws";
 
   const handleFetchImage = async () => {
     try {
@@ -139,6 +139,7 @@ const App = () => {
       setLoading(false);
     }
   };
+
   const handleClear = () => {
     setSelectedImage(null);
     setApiImage(null);
@@ -162,7 +163,6 @@ const App = () => {
     if (apiImage && apiImage.length > 1) {
       setTypingAnimation(true);
 
-   
       setTimeout(() => {
         document.getElementById('result-container').scrollIntoView({
           behavior: 'smooth',
@@ -190,8 +190,6 @@ const App = () => {
     }
   };
  
-    
-
   return (
     <div className={`app-container ${typingAnimation ? 'typing-animation-active' : ''}`}>
       <div className='main-heading'>
@@ -218,6 +216,7 @@ const App = () => {
           )}
         </div>
       </div>
+
       <div className='advantages-container'>
         <h2>Features of this Product</h2>
         <div className='adv'>
@@ -235,6 +234,7 @@ const App = () => {
           </div>
         </div>
       </div>
+
       <div className='test-heading-container'>
       <h2 className='test-heading'>Let <span className='demo'>Nvision AI </span>accelerate your business growth</h2>
       </div>
@@ -347,16 +347,18 @@ const App = () => {
                 </>
               )}
               {selectedTab === "defectDetection" && (
-                <>
-                  
-                  <ul className='labels'>
-                    {apiImage[1].labelsWithConfidence &&
-                      apiImage[1].labelsWithConfidence.map((label, index) => (
-                        <li key={index} className='label'>{label}</li>
-                      ))}
-                  </ul>
-                </>
-              )}
+  <>
+    {apiImage[1].labelsWithConfidence && apiImage[1].labelsWithConfidence.length > 0 ? (
+      <ul className='labels'>
+        {apiImage[1].labelsWithConfidence.map((label, index) => (
+          <li key={index} className='label'>{label.charAt(0).toUpperCase() + label.slice(1)}</li>
+        ))}
+      </ul>
+    ) : (
+      <p className='result-description'>No defects found</p>
+    )}
+  </>
+)}
             </div>
           </div>
         )}
