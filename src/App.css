@@ -9,6 +9,10 @@ body {
   height: 100%;
   
 }
+.pa{
+  color: black;
+  font-weight: 600;
+}
 
 .app-container {
   display: flex;
@@ -506,6 +510,10 @@ label.browse-button {
     font-size: 10px;
     width: 105px;
     transition: background-color 0.3s;
+  }
+  .advantages-container h2{
+    text-align: center;
+    
   }
 
   p{

@@ -1,16 +1,16 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import log from "./logo1.png";
+import log from "./images/logo1.png";
 import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
-import video from "./video.mp4"
+import video from "./images/video.mp4"
 import './App.css';
-import log1 from "./sample1.jpg";
-import log2 from "./sample2.jpg"
-import log3 from "./sample6.jpg"
-import log4 from "./sample4.jpg"
-import log5 from "./adv1.png"
-import log6 from "./adv3.png"
-import log7 from "./adv2.png"
+import log1 from "./images/sample1.jpg";
+import log2 from "./images/sample2.jpg"
+import log3 from "./images/sample6.jpg"
+import log4 from "./images/sample4.jpg"
+import log5 from "./images/adv1.png"
+import log6 from "./images/adv3.png"
+import log7 from "./images/adv2.png"
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
@@ -96,7 +96,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "https://wjih4eofe2b63wr4z3ok5rxngi0czlqo.lambda-url.ap-south-1.on.aws";
+  const baseUrl = "https://yhtsegoliygk6l2a5kfgarevge0zsest.lambda-url.ap-south-1.on.aws/";
 
   const handleFetchImage = async () => {
     try {
