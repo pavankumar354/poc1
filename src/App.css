@@ -538,6 +538,34 @@ label.browse-button {
 
   .result-image{
     width: 350px;
+    height: 350px;
   }
 
+}
+@media (max-width:400px){
+  .output-image {
+    width: 300px;
+  }
+
+  .result-image{
+    width:98%;
+    height: 350px;
+  }
+  .input{
+    width: 300px;
+  }
+  .output-container {
+    background-color: rgba(211, 211, 211, 0.7); 
+    border: 1px solid #e0e0e0;
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    margin: 20px;
+    width: 300px;
+    height: 450px;
+    flex-direction: column; 
+    flex-grow: 0 0 1;
+  }
+  
 }

@@ -2,15 +2,11 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import log from "./images/logo1.png";
 import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
-
 import './App.css';
 import log1 from "./images/sample1.jpg";
-import log2 from "./images/sample2.jpg"
-import log3 from "./images/sample6.jpg"
-import log4 from "./images/sample4.jpg"
-import log5 from "./images/adv1.png"
-import log6 from "./images/adv3.png"
-import log7 from "./images/adv2.png"
+import log2 from "./images/sample2.jpg";
+import log3 from "./images/sample6.jpg";
+import log4 from "./images/sample4.jpg";
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
@@ -97,7 +93,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "https://crfcdivauy7cwfysg23oqojl6u0jrsmd.lambda-url.ap-south-1.on.aws";
+  const baseUrl = "https://l7fm23xpdklp4zqxcwvlngihfq0clklz.lambda-url.ap-south-1.on.aws";
 
   const handleFetchImage = async () => {
     try {
@@ -222,15 +218,15 @@ const App = () => {
         <h2>Features of this Product</h2>
         <div className='adv'>
           <div className='adv1'>
-            <img src={log6} alt="adv" className='adv-images'/>
+            <img src="https://nvisionai-video.s3.amazonaws.com/adv1.png" alt="adv" className='adv-images'/>
             <p className='adv-par'>Automatic identification of the product.</p>
           </div>
           <div className='adv1'>
-          <img src={log5} alt="adv" className='adv-images'/>
+          <img src="https://nvisionai-video.s3.amazonaws.com/adv2.png" alt="adv" className='adv-images'/>
           <p className='adv-par'>Efficiently identifies and categorizes defects found across products.</p>
           </div>
           <div className='adv1'>
-          <img src={log7} alt="adv" className='adv-images'/>
+          <img src="https://nvisionai-video.s3.amazonaws.com/adv3.png" alt="adv" className='adv-images'/>
           <p className='adv-par'>Improved efficiency with reduced processing time.</p>
           </div>
         </div>

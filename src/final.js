@@ -1,16 +1,16 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import log from "./logo1.png";
+import log from "./images/logo1.png";
 import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
-import video from "./final video poc-1.mp4"
+
 import './App.css';
-import log1 from "./sample1.jpg";
-import log2 from "./sample2.jpg"
-import log3 from "./sample6.jpg"
-import log4 from "./sample4.jpg"
-import log5 from "./adv1.png"
-import log6 from "./3-removebg-preview.png"
-import log7 from "./adv2.png"
+import log1 from "./images/sample1.jpg";
+import log2 from "./images/sample2.jpg"
+import log3 from "./images/sample6.jpg"
+import log4 from "./images/sample4.jpg"
+import log5 from "./images/adv1.png"
+import log6 from "./images/adv3.png"
+import log7 from "./images/adv2.png"
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
@@ -43,6 +43,7 @@ const sampleImages = [
 
 
 const App = () => {
+  const videoUrl = 'https://nvisionai-video.s3.amazonaws.com/final+video+poc-1.mp4'
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [apiImage, setApiImage] = useState(null);
@@ -52,6 +53,7 @@ const App = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [typingAnimation, setTypingAnimation] = useState(false);
   const [activeButton, setActiveButton] = useState("product");
+  const [uploadStatus, setUploadStatus] = useState('Upload an image...');
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -95,7 +97,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "http://127.0.0.1:8000";
+  const baseUrl = "https://crfcdivauy7cwfysg23oqojl6u0jrsmd.lambda-url.ap-south-1.on.aws";
 
   const handleFetchImage = async () => {
     try {
@@ -106,32 +108,35 @@ const App = () => {
 
       setLoading(true);
       setError(null);
+      setUploadStatus('Uploading an image...');
       const formData = new FormData();
       formData.append('image', selectedImage);
       const response = await axios.post(`${baseUrl}/upload-image`, formData);
-  
-      console.log(response.data); 
+
+      const { classification_result, detection_plot_url, labels_with_confidence } = response.data;
+
       const uploadedImageDetails = {
         id: 1,
         url: URL.createObjectURL(selectedImage),
         alt: 'Uploaded Image',
         description: 'Image uploaded successfully',
       };
-  
+     
       const outputImageDetails = {
         id: 2,
-        url: `${baseUrl}${response.data.detection_plot_url}?timestamp=${new Date().getTime()}`,
+        url: `${baseUrl}${detection_plot_url}?timestamp=${new Date().getTime()}`,
         alt: 'AI Result',
-        description: response.data.classification_result,
-        labelsWithConfidence: response.data.labels_with_confidence,
+        description: classification_result,
+        labelsWithConfidence: labels_with_confidence,
       };
-      
-  
-    setApiImage([uploadedImageDetails, outputImageDetails]);
+
+      setApiImage([uploadedImageDetails, outputImageDetails]);
+      setUploadStatus('Image uploaded successfully');
     } catch (error) {
       console.error('Error fetching image:', error);
       console.error('Error Details:', error.response);
-    }finally {
+      setError('Error uploading image. Please try again.');
+    } finally {
       setLoading(false);
     }
   };
@@ -159,7 +164,6 @@ const App = () => {
     if (apiImage && apiImage.length > 1) {
       setTypingAnimation(true);
 
-   
       setTimeout(() => {
         document.getElementById('result-container').scrollIntoView({
           behavior: 'smooth',
@@ -187,27 +191,25 @@ const App = () => {
     }
   };
  
-    
-
   return (
     <div className={`app-container ${typingAnimation ? 'typing-animation-active' : ''}`}>
-      <div className='heading'>
+      <div className='main-heading'>
         <h1>Nvision AI</h1>
       </div>
-      <img src={log} alt="logo" className='logo' />
+      <img src={log} alt="logo" className='company-logo' />
       <p className='description'>A Tool for <span className='description1'>Automatic Identification of Products and Defects using Computer Vision </span> to enhance process efficiency and productivity.</p>
       
-      <div className="video-container1">
+      <div className="video-container">
         <video
           id="main-video"
-          src={video}
+          src={videoUrl}
           type="video/mp4"
           className='videos'
           
           controls={false} 
           onClick={handlePauseResume} 
         />
-        <div className="video-controls1" >
+        <div className="video-controls" >
           {videoPlaying ? (
             <MdPause onClick={handlePauseResume} className='control-icon1' />
           ) : (
@@ -215,27 +217,38 @@ const App = () => {
           )}
         </div>
       </div>
-      <div className='advantages'>
+
+      <div className='advantages-container'>
         <h2>Features of this Product</h2>
         <div className='adv'>
           <div className='adv1'>
-            <img src={log6} alt="adv" className='adv-images1'/>
-            <p className='par'>Automatic identification of the product.</p>
+            <img src={log6} alt="adv" className='adv-images'/>
+            <p className='adv-par'>Automatic identification of the product.</p>
           </div>
           <div className='adv1'>
           <img src={log5} alt="adv" className='adv-images'/>
-          <p className='par'>Efficiently identifies and categorizes defects found across products.</p>
+          <p className='adv-par'>Efficiently identifies and categorizes defects found across products.</p>
           </div>
           <div className='adv1'>
           <img src={log7} alt="adv" className='adv-images'/>
-          <p className='par'>Improved efficiency with reduced processing time.</p>
+          <p className='adv-par'>Improved efficiency with reduced processing time.</p>
           </div>
         </div>
       </div>
-      <h2 className='ai'>Let <span className='demo'>Nvision AI </span>accelerate your business growth ,Try Validating!</h2>
-      <div className='demo-cont'>
+
+      <div className='test-heading-container'>
+      <h2 className='test-heading'>Let <span className='demo'>Nvision AI </span>accelerate your business growth</h2>
+      </div>
+      <div className='test-heading-container1'>
+      <h2 className='test-heading1'>Try Validating!</h2>
+      </div>
+      <div className='demo-container'>
+        
       <div className='app'>
-      <h3> Upload an image...</h3>
+      
+      
+      
+      <h3>{uploadStatus}</h3>
       <div className='image-upload-container'>
         <div
           className={`upload-container ${isDragging ? 'dragging' : ''}`}
@@ -269,6 +282,7 @@ const App = () => {
         <button onClick={handleFetchImage}>Upload and Run</button>
         <button onClick={handleClear}>Clear</button></div> 
         {loading && <p>Loading...</p>}
+        
   {error && <p style={{ color: 'red' }}>{error}</p>}
       <div id="result-container" className={`result-container ${typingAnimation ? 'typing-animation' : ''}`}>
         <div className='input-image'>
@@ -285,6 +299,7 @@ const App = () => {
 
         {apiImage && apiImage.length > 1 && (
           <div className='output-container'>
+            
             <div className='output-buttons'>
         <button
           className={activeButton === "product" ? 'active' : ''}
@@ -333,16 +348,18 @@ const App = () => {
                 </>
               )}
               {selectedTab === "defectDetection" && (
-                <>
-                  
-                  <ul className='labels'>
-                    {apiImage[1].labelsWithConfidence &&
-                      apiImage[1].labelsWithConfidence.map((label, index) => (
-                        <li key={index} className='label'>{label}</li>
-                      ))}
-                  </ul>
-                </>
-              )}
+  <>
+    {apiImage[1].labelsWithConfidence && apiImage[1].labelsWithConfidence.length > 0 ? (
+      <ul className='labels'>
+        {apiImage[1].labelsWithConfidence.map((label, index) => (
+          <li key={index} className='label'>{label.charAt(0).toUpperCase() + label.slice(1)}</li>
+        ))}
+      </ul>
+    ) : (
+      <p className='result-description'>No defects found</p>
+    )}
+  </>
+)}
             </div>
           </div>
         )}
