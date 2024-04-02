@@ -5,7 +5,7 @@ import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
 import './App.css';
 import log1 from "./images/sample1.jpg";
 import log2 from "./images/sample2.jpg";
-import log3 from "./images/sample6.jpg";
+import log3 from "./images/sample3.jpg";
 import log4 from "./images/sample4.jpg";
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
