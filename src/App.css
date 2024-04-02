@@ -567,5 +567,7 @@ label.browse-button {
     flex-direction: column; 
     flex-grow: 0 0 1;
   }
-  
+  .result-description{
+    font-size: 15px;
+  }
 }
