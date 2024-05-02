@@ -14,7 +14,7 @@ Steps with Images: Demonstrates the three-step process with relevant images.
 
 Demo Section: Allows users to upload images for AI analysis and view results.
 
-Getting Started
+**Getting Started**
 To run this application locally:
 
 Clone the repository to your local machine.
