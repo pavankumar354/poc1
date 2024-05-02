@@ -1,4 +1,4 @@
-# NvisionAI-UI
+# NvisionAI-UI# NvisionAI-UI
 # Overview
 This React application utilizes computer vision to automatically identify products and defects. It includes features like image uploading, AI analysis, and carousel components to showcase product benefits. Here's a breakdown of the main components:
 
