@@ -3,11 +3,17 @@ Overview
 This React application utilizes computer vision to automatically identify products and defects. It includes features like image uploading, AI analysis, and carousel components to showcase product benefits. Here's a breakdown of the main components:
 
 Carousel: Displays key information about product features using slick slider.
+
 Video Player: Demonstrates the application's capabilities through a video.
+
 Advantages Section: Highlights the benefits of using Nvision AI.
+
 Challenges Resolution: Outlines how Nvision AI addresses specific challenges.
+
 Steps with Images: Demonstrates the three-step process with relevant images.
+
 Demo Section: Allows users to upload images for AI analysis and view results.
+
 Getting Started
 To run this application locally:
 
