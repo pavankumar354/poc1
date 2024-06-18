@@ -93,7 +93,7 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
-  const baseUrl = "https://l7fm23xpdklp4zqxcwvlngihfq0clklz.lambda-url.ap-south-1.on.aws";
+  const baseUrl = "https://gtjjto77a3swmj2c5zvpxv2moq0uhdtu.lambda-url.ap-south-1.on.aws";
 
   const handleFetchImage = async () => {
     try {
