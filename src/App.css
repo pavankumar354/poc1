@@ -567,7 +567,11 @@ label.browse-button {
     flex-direction: column; 
     flex-grow: 0 0 1;
   }
+<<<<<<< HEAD
   .result-description{
     font-size: 15px;
   }
+=======
+  
+>>>>>>> f97e4897c1a3b55a6f230a707608a3738c68aad2
 }

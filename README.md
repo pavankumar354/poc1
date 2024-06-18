@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NvisionAI-UI# NvisionAI-UI
 # Overview
 This React application utilizes computer vision to automatically identify products and defects. It includes features like image uploading, AI analysis, and carousel components to showcase product benefits. Here's a breakdown of the main components:
@@ -63,3 +64,6 @@ The project is structured as follows:
 If you encounter any issues while running or deploying the application, refer to the error messages in the console for debugging. Make sure all dependencies are installed correctly and the environment is properly configured.
 
 
+=======
+# NvisionAI-UI
+>>>>>>> f97e4897c1a3b55a6f230a707608a3738c68aad2

@@ -5,7 +5,11 @@ import { MdOutlineCloudUpload,MdPause, MdPlayArrow } from "react-icons/md";
 import './App.css';
 import log1 from "./images/sample1.jpg";
 import log2 from "./images/sample2.jpg";
+<<<<<<< HEAD
 import log3 from "./images/sample3.jpg";
+=======
+import log3 from "./images/sample6.jpg";
+>>>>>>> f97e4897c1a3b55a6f230a707608a3738c68aad2
 import log4 from "./images/sample4.jpg";
 const MAX_FILE_SIZE_MB = 200;
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -93,7 +97,11 @@ const App = () => {
       alert('Please choose a valid image file (jpg, jpeg, or png) under 200MB.');
     }
   };
+<<<<<<< HEAD
   const baseUrl = "https://gtjjto77a3swmj2c5zvpxv2moq0uhdtu.lambda-url.ap-south-1.on.aws";
+=======
+  const baseUrl = "https://l7fm23xpdklp4zqxcwvlngihfq0clklz.lambda-url.ap-south-1.on.aws";
+>>>>>>> f97e4897c1a3b55a6f230a707608a3738c68aad2
 
   const handleFetchImage = async () => {
     try {
